@@ -11,8 +11,7 @@ var user = {};
 
 /**
  * @typedef {object} Address
- * @property {string} street
- * @property {string} city
+ * @property {String} name
  */
 
 /**
@@ -24,29 +23,28 @@ var user = {};
 
 /**
  * 
- * @returns {Promise<User>}
+ * @returns {Promise<User[]>}
  */
 function fetchUser() {
   return axios.get(url);
 }
 
-fetchUser().then(function(response) {
-  response.address.city;
-})
+// fetchUser().then(function(response) {
+//   response.address.city;
+// })
 
 function startApp() {
-  fetchUser()
+  fetchUser() 
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       user = response.data;
-      // TODO: 이름, 이메일, 주소 표시하기
-      username.innerText = user[0].name;
-      email.innerText = user[0].email;
-      address.innerText = user[0].email;
+      username.innerText = user[0].username;
+      console.log(user);
     })
     .catch(function (error) {
       console.log(error);
-    });
+    })
+    
 }
 
 startApp();
